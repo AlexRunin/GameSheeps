@@ -20,10 +20,13 @@ public class MyEnums : MonoBehaviour
     StudentAge studentAge;
     void Start()
     {
-        studentAge = StudentAge.AlexandrR;
-        int a = (int)studentAge;
+        studentAge = StudentAge.AlexandrR; // Назначитьсостояние
+        int a = (int)studentAge; // получить значение состояние
         print(studentAge);
         print(a);
+        if (studentAge == StudentAge.Veronika) // Сравнить состояние
+        { 
         
+        }
     }
 }
