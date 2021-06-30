@@ -396,7 +396,7 @@ Transform:
   - {fileID: 1050572059}
   - {fileID: 514736669}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303136998
 GameObject:
@@ -748,7 +748,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 351351339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5233456974663517128}
+        m_TargetAssemblyTypeName: TraktorMovement, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 123456789
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &351351339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e7ba365c938a5644aa232dff1214050b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c3a17ba76e91bf42b1216d41a25c876, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1063,6 +1075,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2452f1908c78dd4c90534fea65111b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &954876962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954876963}
+  m_Layer: 0
+  m_Name: SenoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954876963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954876962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9065018, y: 3.0068111, z: -21.47333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1050572059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3626301352746521669, guid: 68b9cce0ce0ec4f4688fa227131e6f84, type: 3}
@@ -1519,12 +1561,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
+      propertyPath: seno
+      value: 
+      objectReference: {fileID: 5642462188317047760, guid: e402d566969766547b316c78e2c8abf8, type: 3}
+    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
       propertyPath: speed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
+      propertyPath: spawnPosition
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2709791935418197139, guid: c91d458c12526534eb19d65378204353, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2709791935418197139, guid: c91d458c12526534eb19d65378204353, type: 3}
       propertyPath: m_LocalPosition.x

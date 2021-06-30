@@ -108,6 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb0d4dbaa2c523468308e1301677cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
+  seno: {fileID: 5642462188317047760, guid: e402d566969766547b316c78e2c8abf8, type: 3}
+  fireRate: 0.5
+  senoManager: {fileID: 0}
 --- !u!1001 &1980520476685283717
 PrefabInstance:
   m_ObjectHideFlags: 0
