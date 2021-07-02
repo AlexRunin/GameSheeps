@@ -33,7 +33,7 @@ public class TraktorMovement : MonoBehaviour
     {
 
         MoveTractor();
-        nextFire -= Time.deltaTime;
+        // nextFire -= Time.deltaTime;
     }
 
     private void MoveTractor()
@@ -64,12 +64,7 @@ public class TraktorMovement : MonoBehaviour
         //direction = 0f;
         //isMove = false;
         tractorState = TractorState.Stop;
-        
     }
-
-
-    
-
 
     // Делаем кнопку FIRE
     //public void Fire(string message)
@@ -79,12 +74,13 @@ public class TraktorMovement : MonoBehaviour
     //}
     public void Fire()
     {
-        if (nextFire < 0)
+        if (Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             GameObject seno = Instantiate(this.seno, spawnPoint.position, this.seno.transform.rotation); // Объект создался
             seno.transform.SetParent(senoManager);
             Destroy(seno, 10f);
-            nextFire = fireRate;
+            //nextFire = fireRate;
         }
 
         //else if (nextFire > 1)
