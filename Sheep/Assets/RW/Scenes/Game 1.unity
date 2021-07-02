@@ -1561,21 +1561,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
-      propertyPath: seno
+      propertyPath: senoManager
       value: 
-      objectReference: {fileID: 5642462188317047760, guid: e402d566969766547b316c78e2c8abf8, type: 3}
-    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
-      propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
-      propertyPath: fireRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2284144755864043940, guid: c91d458c12526534eb19d65378204353, type: 3}
-      propertyPath: spawnPosition
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 954876963}
     - target: {fileID: 2709791935418197139, guid: c91d458c12526534eb19d65378204353, type: 3}
       propertyPath: m_RootOrder
       value: 3

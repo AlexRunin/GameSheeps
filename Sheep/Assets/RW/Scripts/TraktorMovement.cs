@@ -64,8 +64,11 @@ public class TraktorMovement : MonoBehaviour
         //direction = 0f;
         //isMove = false;
         tractorState = TractorState.Stop;
+        
     }
 
+
+    
 
 
     // Делаем кнопку FIRE
