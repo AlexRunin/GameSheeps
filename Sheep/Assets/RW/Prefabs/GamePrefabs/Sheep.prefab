@@ -128,3 +128,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   direction: {x: 0, y: -1, z: 0}
+  jumpForce: 600
+  heartEffect: {fileID: 2796630017602052081, guid: f795e8b4e19cf694eb195040960a10a3, type: 3}
