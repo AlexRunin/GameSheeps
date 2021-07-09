@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SenoMovement : MonoBehaviour
+public class SheepMovement : MonoBehaviour
 {
+    [SerializeField] private SoundManager soundManager;
     [SerializeField] private float speed;
     [SerializeField] private Vector3 direction;
     [SerializeField] private float jumpForce;
     private Rigidbody rb;
     [SerializeField] private GameObject heartEffect;
-    
 
     private void Awake()
     {
@@ -25,10 +25,10 @@ public class SenoMovement : MonoBehaviour
     {
         // Компонент наш класс или скрипт
         SenoMovement senoMovement = other.GetComponent<SenoMovement>();
-
-        if(senoMovement != null)                                          //(other.gameObject.tag == "Seno")
+        
+        if (senoMovement != null)                                          //(other.gameObject.tag == "Seno")
         {
-            
+            //soundManager.PlaySheepHitClip();
             rb.isKinematic = false;
             GetComponent<BoxCollider>().enabled = false;
             rb.AddForce(Vector3.up * jumpForce); // прыгаем
@@ -39,4 +39,5 @@ public class SenoMovement : MonoBehaviour
             Destroy(effect, 1f);
         }
     }
+
 }

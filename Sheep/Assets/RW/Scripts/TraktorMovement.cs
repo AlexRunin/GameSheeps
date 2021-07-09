@@ -8,6 +8,7 @@ public enum TractorState { Move, Stop };
 
 public class TraktorMovement : MonoBehaviour
 {
+    [SerializeField] private SoundManager soundManager;
 
     [SerializeField] private float speed;
     [SerializeField] private GameObject seno;
@@ -80,6 +81,7 @@ public class TraktorMovement : MonoBehaviour
             GameObject seno = Instantiate(this.seno, spawnPoint.position, this.seno.transform.rotation); // Объект создался
             seno.transform.SetParent(senoManager);
             Destroy(seno, 10f);
+           // soundManager.PlayShootClip();
             //nextFire = fireRate;
         }
 

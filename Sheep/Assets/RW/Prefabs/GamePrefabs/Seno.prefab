@@ -75,9 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d207e15329f7344e9bf624f7f2fbdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   direction: {x: 0, y: 0, z: 1}
   jumpForce: 0
+  heartEffect: {fileID: 2796630017602052081, guid: f795e8b4e19cf694eb195040960a10a3, type: 3}
 --- !u!1 &5642462189518434237
 GameObject:
   m_ObjectHideFlags: 0
