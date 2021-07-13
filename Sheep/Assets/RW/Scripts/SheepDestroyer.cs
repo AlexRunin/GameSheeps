@@ -12,7 +12,7 @@ public class SheepDestroyer : MonoBehaviour
 
         if (sheepMovement != null)
         {
-            //soundManager.PlayDropClip();
+            soundManager.PlayDropClip();
             other.GetComponent<Rigidbody>().isKinematic = false;
             Destroy(other.gameObject, 3f);
         }

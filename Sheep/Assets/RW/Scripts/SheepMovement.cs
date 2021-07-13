@@ -28,7 +28,7 @@ public class SheepMovement : MonoBehaviour
         
         if (senoMovement != null)                                          //(other.gameObject.tag == "Seno")
         {
-            //soundManager.PlaySheepHitClip();
+            soundManager.PlaySheepHitClip();
             rb.isKinematic = false;
             GetComponent<BoxCollider>().enabled = false;
             rb.AddForce(Vector3.up * jumpForce); // ןנûדאול

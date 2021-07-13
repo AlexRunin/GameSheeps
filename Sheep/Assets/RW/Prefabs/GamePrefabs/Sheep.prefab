@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 11400000, guid: 3d6600a99c56e684294cc2dacd71baad, type: 2}
-  speed: 20
+  speed: 2
   direction: {x: 0, y: -1, z: 0}
   jumpForce: 500
   heartEffect: {fileID: 2796630017602052081, guid: f795e8b4e19cf694eb195040960a10a3, type: 3}

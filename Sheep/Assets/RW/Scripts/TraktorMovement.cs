@@ -44,6 +44,7 @@ public class TraktorMovement : MonoBehaviour
             if (((transform.position.x <= 22) && (direction == 1f)) || ((transform.position.x >= -22) && (direction == -1f)))
             {
                 transform.Translate(Vector3.right * speed * direction * Time.deltaTime);
+                //soundManager.PlayMotor();
             }
         }
     }
@@ -53,12 +54,14 @@ public class TraktorMovement : MonoBehaviour
         direction = 1f;
         //isMove = true;
         tractorState = TractorState.Move;
+        soundManager.PlayArrow();
     }
     public void MoveLeft()
     {
         direction = -1f;
         //isMove = true;
         tractorState = TractorState.Move;
+        soundManager.PlayArrow();
     }
     public void StopeMove()
     {
@@ -81,7 +84,7 @@ public class TraktorMovement : MonoBehaviour
             GameObject seno = Instantiate(this.seno, spawnPoint.position, this.seno.transform.rotation); // Объект создался
             seno.transform.SetParent(senoManager);
             Destroy(seno, 10f);
-           // soundManager.PlayShootClip();
+            soundManager.PlayShootClip();
             //nextFire = fireRate;
         }
 

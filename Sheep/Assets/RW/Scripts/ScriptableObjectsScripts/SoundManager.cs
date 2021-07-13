@@ -8,6 +8,8 @@ public class SoundManager : ScriptableObject
     [SerializeField] private AudioClip shootClip; // выстрел
     [SerializeField] private AudioClip sheepHitClip; // поподание овцы в сено
     [SerializeField] private AudioClip sheepDropClip; // поподание овечки в ад
+    [SerializeField] private AudioClip motor;
+    [SerializeField] private AudioClip arrow;
 
     [SerializeField] private Vector3 cameraPosition;
 
@@ -30,5 +32,13 @@ public class SoundManager : ScriptableObject
     public void PlayDropClip()
     {
         PlaySound(sheepDropClip);
+    }
+    public void PlayArrow()
+    {
+        PlaySound(arrow);
+    }
+    public void PlayMotor()    
+    {
+        PlaySound(motor);
     }
 }
