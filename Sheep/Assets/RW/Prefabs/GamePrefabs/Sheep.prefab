@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7280330630933693475}
   - component: {fileID: 7280330630931438309}
   - component: {fileID: 7280330630931438306}
-  - component: {fileID: 1360736163}
+  - component: {fileID: 1761001343}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1360736163
+--- !u!114 &1761001343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 11400000, guid: 3d6600a99c56e684294cc2dacd71baad, type: 2}
-  speed: 2
   direction: {x: 0, y: -1, z: 0}
   jumpForce: 500
   heartEffect: {fileID: 2796630017602052081, guid: f795e8b4e19cf694eb195040960a10a3, type: 3}
+  sheepProperty: {fileID: 11400000, guid: a61127531e2d9f343a9e581eee25fc7e, type: 2}

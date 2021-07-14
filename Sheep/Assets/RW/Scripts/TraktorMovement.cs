@@ -44,7 +44,7 @@ public class TraktorMovement : MonoBehaviour
             if (((transform.position.x <= 22) && (direction == 1f)) || ((transform.position.x >= -22) && (direction == -1f)))
             {
                 transform.Translate(Vector3.right * speed * direction * Time.deltaTime);
-                //soundManager.PlayMotor();
+                soundManager.PlayMotor();
             }
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4447217, g: 0.4942547, b: 0.57348084, a: 1}
+  m_IndirectSpecularColor: {r: 0.4447215, g: 0.49425423, b: 0.5734802, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -926,7 +926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642462188317047762, guid: e402d566969766547b316c78e2c8abf8, type: 3}
       propertyPath: speed
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e402d566969766547b316c78e2c8abf8, type: 3}
@@ -1860,10 +1860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1360736163, guid: 74041923eba6b374a96bda8e2ae9ecc8, type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7280330630931438307, guid: 74041923eba6b374a96bda8e2ae9ecc8, type: 3}
       propertyPath: m_Name
       value: Sheep

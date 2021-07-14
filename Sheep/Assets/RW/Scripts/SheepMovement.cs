@@ -5,20 +5,25 @@ using UnityEngine;
 public class SheepMovement : MonoBehaviour
 {
     [SerializeField] private SoundManager soundManager;
-    [SerializeField] private float speed;
+    //[SerializeField] private float speed;
     [SerializeField] private Vector3 direction;
     [SerializeField] private float jumpForce;
     private Rigidbody rb;
     [SerializeField] private GameObject heartEffect;
 
+    [SerializeField] private SheepProperty sheepProperty;
+
     private void Awake()
     {
+        Debug.Log("Создалась овца с именем: " + sheepProperty.SheepName);
+        //sheepProperty.SheepSpeed = 40f;
+
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        transform.Translate(direction * speed * Time.fixedDeltaTime);
+        transform.Translate(direction * sheepProperty.SheepSpeed * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter(Collider other) // other -обект с которым столкнулись
