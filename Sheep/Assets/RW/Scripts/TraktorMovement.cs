@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public enum TractorState { Move, Stop };
 
@@ -22,6 +22,9 @@ public class TraktorMovement : MonoBehaviour
     //private bool isMove;
     private float direction;
     private TractorState tractorState = TractorState.Stop;
+
+    // Создаем событие UnityEvent
+    [SerializeField] public UnityEvent shootEvent;
 
 
     private void Awake()
@@ -86,6 +89,7 @@ public class TraktorMovement : MonoBehaviour
             Destroy(seno, 10f);
             soundManager.PlayShootClip();
             //nextFire = fireRate;
+            shootEvent.Invoke();
         }
 
         //else if (nextFire > 1)

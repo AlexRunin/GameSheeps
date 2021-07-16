@@ -7,8 +7,13 @@ public class SheepProperty : ScriptableObject
 {
     [SerializeField] private string sheepName;
     [SerializeField] private float sheepSpeed;
+    [SerializeField] private float sheepSize;
     // Добавить размер овце Vectar3
-
+    public float SheepSize
+    {
+        get { return sheepSize; }
+        
+    }
     public string SheepName
     {
         get

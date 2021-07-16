@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SheepProperty 2
   m_EditorClassIdentifier: 
   sheepName: Luiza
-  sheepSpeed: 5
+  sheepSpeed: 15
+  sheepSize: 1

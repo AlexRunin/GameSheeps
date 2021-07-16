@@ -11,11 +11,11 @@ public class SheepMovement : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private GameObject heartEffect;
 
-    [SerializeField] private SheepProperty sheepProperty;
+    private SheepProperty sheepProperty;
 
     private void Awake()
     {
-        Debug.Log("Создалась овца с именем: " + sheepProperty.SheepName);
+        //Debug.Log("Создалась овца с именем: " + sheepProperty.SheepName);
         //sheepProperty.SheepSpeed = 40f;
 
         rb = GetComponent<Rigidbody>();
@@ -43,6 +43,13 @@ public class SheepMovement : MonoBehaviour
             GameObject effect = Instantiate(heartEffect, transform.position + new Vector3(0f, 5f, 0f), heartEffect.transform.rotation); // Spawn
             Destroy(effect, 1f);
         }
+    }
+
+    public void SetPropertyToSheep(SheepProperty sheepProperty)
+    {
+        this.sheepProperty = sheepProperty;
+
+        transform.localScale = new Vector3(sheepProperty.SheepSize, sheepProperty.SheepSize, sheepProperty.SheepSize);
     }
 
 }
