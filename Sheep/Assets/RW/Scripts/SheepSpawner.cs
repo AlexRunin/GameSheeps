@@ -11,6 +11,10 @@ public class SheepSpawner : MonoBehaviour
     // private float timer = 0;
     [SerializeField] private List<SheepProperty> sheepProperties;
 
+    [SerializeField] private Vector3 spawnPoint_1;
+    [SerializeField] private Vector3 spawnPoint_2;
+    [SerializeField] private Vector3 spawnPoint_3;
+
 
     void Start()
     {
@@ -36,6 +40,16 @@ public class SheepSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
             CreateSheep();
         }
-        
+    }
+
+    void SpawnSheepPoint()
+    {
+        //float pointRandom = Random.Range(spawnPoint_1, spawnPoint_2, spawnPoint_3);
+        //spawnPointPosition = new Vector3(xRandom, spawnPointPosition.y, spawnPointPosition.z);
+        GameObject sheep = Instantiate(sheepPrefab, spawnPointPosition, sheepPrefab.transform.rotation); // Создаем овцу обект, на обекте есть компонент
+
+        int randomSheepPropertyIndex = Random.Range(0, sheepProperties.Count);
+
+        sheep.GetComponent<SheepMovement>().SetPropertyToSheep(sheepProperties[randomSheepPropertyIndex]);
     }
 }
