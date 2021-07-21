@@ -13,6 +13,10 @@ public class SheepMovement : MonoBehaviour
 
     private SheepProperty sheepProperty;
 
+    [SerializeField] private ScoreManager scoreManager;
+
+    [SerializeField] private GameEvent savedSheepEvent; //само сабытие
+
     private void Awake()
     {
         //Debug.Log("Создалась овца с именем: " + sheepProperty.SheepName);
@@ -26,23 +30,31 @@ public class SheepMovement : MonoBehaviour
         transform.Translate(direction * sheepProperty.SheepSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter(Collider other) // other -обект с которым столкнулись
+    private void OnTriggerEnter(Collider other) // other -обект с которым столкнулись (Уничтожаем сено)
     {
         // Компонент наш класс или скрипт
         SenoMovement senoMovement = other.GetComponent<SenoMovement>();
         
         if (senoMovement != null)                                          //(other.gameObject.tag == "Seno")
         {
-            soundManager.PlaySheepHitClip();
-            rb.isKinematic = false;
-            GetComponent<BoxCollider>().enabled = false;
-            rb.AddForce(Vector3.up * jumpForce); // прыгаем
-            Destroy(gameObject, 1f); //уничтажаем сено Sheep
+            DestroySheep();
             Destroy(other.gameObject); //уничтажаем сено 
-
-            GameObject effect = Instantiate(heartEffect, transform.position + new Vector3(0f, 5f, 0f), heartEffect.transform.rotation); // Spawn
-            Destroy(effect, 1f);
         }
+    }
+
+    public void DestroySheep() // Уничтажаем овцу
+    {
+        soundManager.PlaySheepHitClip();
+        rb.isKinematic = false;
+        GetComponent<BoxCollider>().enabled = false;
+        rb.AddForce(Vector3.up * jumpForce); // прыгаем
+        Destroy(gameObject, 1f); //уничтажаем сено Sheep
+        
+        GameObject effect = Instantiate(heartEffect, transform.position + new Vector3(0f, 5f, 0f), heartEffect.transform.rotation); // Spawn
+        Destroy(effect, 1f);
+
+        scoreManager.SaveSheep();
+        savedSheepEvent.Raise();
     }
 
     public void SetPropertyToSheep(SheepProperty sheepProperty)

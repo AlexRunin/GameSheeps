@@ -130,4 +130,5 @@ MonoBehaviour:
   direction: {x: 0, y: -1, z: 0}
   jumpForce: 500
   heartEffect: {fileID: 2796630017602052081, guid: f795e8b4e19cf694eb195040960a10a3, type: 3}
-  sheepProperty: {fileID: 11400000, guid: a61127531e2d9f343a9e581eee25fc7e, type: 2}
+  scoreManager: {fileID: 11400000, guid: 1f8a388d358c2544b86ff0908501a626, type: 2}
+  savedSheepEvent: {fileID: 11400000, guid: 53a489916e4bb334c9bae3407982a34f, type: 2}

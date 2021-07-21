@@ -28,7 +28,6 @@ public class SenoMovement : MonoBehaviour
 
         if(senoMovement != null)                                          //(other.gameObject.tag == "Seno")
         {
-            
             rb.isKinematic = false;
             GetComponent<BoxCollider>().enabled = false;
             rb.AddForce(Vector3.up * jumpForce); // ןנûדאול
