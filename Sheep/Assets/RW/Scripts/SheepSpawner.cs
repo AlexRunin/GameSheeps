@@ -11,45 +11,80 @@ public class SheepSpawner : MonoBehaviour
     // private float timer = 0;
     [SerializeField] private List<SheepProperty> sheepProperties;
 
+
+    //[SerializeField] public int sheepCountWave; // Кол-во овец в волне
+    [SerializeField] public float startWait; // Время ожидания для старта
+    [SerializeField] public float waveWaite; // Задержка между волнами
+
     [SerializeField] private Vector3 spawnPoint_1;
     [SerializeField] private Vector3 spawnPoint_2;
     [SerializeField] private Vector3 spawnPoint_3;
-
+    
+    
 
     void Start()
     {
-        StartCoroutine(SpawnSheep()); // Вызов каррутины
+        StartCoroutine(CreateSpawnSheep()); // Вызов каррутины
+        //SpawnSheepPoint();
     }
 
-    void CreateSheep() 
+    IEnumerator CreateSpawnSheep() 
     {
-        float xRandom = Random.Range(boundary.x, boundary.y);
-        spawnPointPosition = new Vector3(xRandom, spawnPointPosition.y, spawnPointPosition.z);
-        GameObject sheep = Instantiate(sheepPrefab, spawnPointPosition, sheepPrefab.transform.rotation); // Создаем овцу обект, на обекте есть компонент
+        yield return new WaitForSeconds(startWait);
 
-        int randomSheepPropertyIndex = Random.Range(0, sheepProperties.Count);
-
-        sheep.GetComponent<SheepMovement>().SetPropertyToSheep(sheepProperties[randomSheepPropertyIndex]);
-    }
-
-    IEnumerator SpawnSheep()
-    {
-        yield return new WaitForSeconds(spawnRate);
         while (true)
         {
-            yield return new WaitForSeconds(spawnRate);
-            CreateSheep();
+            for (int i = 0; i < sheepProperties.Count; i ++)
+            {
+                float xRandom = Random.Range(boundary.x, boundary.y);
+                spawnPointPosition = new Vector3(xRandom, spawnPointPosition.y, spawnPointPosition.z);
+                GameObject sheep = Instantiate(sheepPrefab, spawnPointPosition, sheepPrefab.transform.rotation); // Создаем овцу обект, на обекте есть компонент
+                int randomSheepPropertyIndex = Random.Range(0, sheepProperties.Count);
+                sheep.GetComponent<SheepMovement>().SetPropertyToSheep(sheepProperties[randomSheepPropertyIndex]);
+
+                yield return new WaitForSeconds(Random.Range(0.5f, spawnRate));
+            }
+            yield return new WaitForSeconds(waveWaite);
+
+            
+            sheepProperties.Add((new SheepProperty()));
+            
         }
     }
+
+    //IEnumerator SpawnSheep()
+    //{
+    //    yield return new WaitForSeconds(startWait);
+
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(spawnRate);
+    //        CreateSheep();
+    //        yield return new WaitForSeconds(waveWaite);
+    //    }
+    //}
 
     void SpawnSheepPoint()
     {
         //float pointRandom = Random.Range(spawnPoint_1, spawnPoint_2, spawnPoint_3);
         //spawnPointPosition = new Vector3(xRandom, spawnPointPosition.y, spawnPointPosition.z);
-        GameObject sheep = Instantiate(sheepPrefab, spawnPointPosition, sheepPrefab.transform.rotation); // Создаем овцу обект, на обекте есть компонент
 
-        int randomSheepPropertyIndex = Random.Range(0, sheepProperties.Count);
+        //yield return new WaitForSeconds(startWait);
 
-        sheep.GetComponent<SheepMovement>().SetPropertyToSheep(sheepProperties[randomSheepPropertyIndex]);
+        //while (true)
+        //{
+        //    for (int i = 0; i < sheepProperties.Count; i++)
+        //    {
+                GameObject sheep = Instantiate(sheepPrefab, spawnPointPosition, sheepPrefab.transform.rotation); // Создаем овцу обект, на обекте есть компонент
+                int randomSheepPropertyIndex = Random.Range(0, sheepProperties.Count);
+                sheep.GetComponent<SheepMovement>().SetPropertyToSheep(sheepProperties[randomSheepPropertyIndex]);
+
+            //    yield return new WaitForSeconds(spawnRate);
+                
+            //}
+            //CreateSheep();
+            //yield return new WaitForSeconds(waveWaite);
+            
+        }
     }
-}
+

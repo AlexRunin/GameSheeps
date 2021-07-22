@@ -5,23 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SheepProperty", menuName = "ScriptableObjects/NewSheepProperty")] //Создаем меню для Unity
 public class SheepProperty : ScriptableObject
 {
-    [SerializeField] private string sheepName;
-    [SerializeField] private float sheepSpeed;
-    [SerializeField] private float sheepSize;
+    [SerializeField] public string sheepName;
+    [SerializeField] public float sheepSpeed;
+    [SerializeField] public float sheepSize;
     // Добавить размер овце Vectar3
     public float SheepSize
     {
-        get { return sheepSize; }
+        get { if (sheepSize == 0) { return sheepSize = 4f; } else { return sheepSize; } }
+        set { if (value == 0) { sheepSize = 2f; } else { sheepSize = 2f; } }
         
     }
     public string SheepName
     {
         get
         {
-            if (sheepName == "")
+            if (sheepName == null)
             {
                 Debug.LogWarning("No Name Sheep");
-                return "None Name";
+                //return "None Name";
+                return sheepName = "Name1";
             }
             else
             {

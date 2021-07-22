@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4447215, g: 0.49425423, b: 0.5734802, a: 1}
+  m_IndirectSpecularColor: {r: 0.4447217, g: 0.4942547, b: 0.57348084, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2062,11 +2062,13 @@ MonoBehaviour:
   sheepPrefab: {fileID: 7280330630931438307, guid: 74041923eba6b374a96bda8e2ae9ecc8, type: 3}
   spawnPointPosition: {x: 0, y: 0, z: 60}
   boundary: {x: -22, y: 22}
-  spawnRate: 1
+  spawnRate: 2
   sheepProperties:
   - {fileID: 11400000, guid: a61127531e2d9f343a9e581eee25fc7e, type: 2}
   - {fileID: 11400000, guid: a8d8b11875ef54d4da785bad7ee75f03, type: 2}
   - {fileID: 11400000, guid: 140a39bb88240bb4994289905f96a2d1, type: 2}
+  startWait: 1.5
+  waveWaite: 5
   spawnPoint_1: {x: 0, y: 0, z: 0}
   spawnPoint_2: {x: 0, y: 0, z: 0}
   spawnPoint_3: {x: 0, y: 0, z: 0}
