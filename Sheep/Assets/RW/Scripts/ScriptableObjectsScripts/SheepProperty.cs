@@ -11,7 +11,7 @@ public class SheepProperty : ScriptableObject
     // Добавить размер овце Vectar3
     public float SheepSize
     {
-        get { if (sheepSize == 0) { return sheepSize = 4f; } else { return sheepSize; } }
+        get { if (sheepSize == 0) { return sheepSize = 2f; } else { return sheepSize; } }
         set { if (value == 0) { sheepSize = 2f; } else { sheepSize = 2f; } }
         
     }
@@ -19,7 +19,7 @@ public class SheepProperty : ScriptableObject
     {
         get
         {
-            if (sheepName == null)
+            if (sheepName == "")
             {
                 Debug.LogWarning("No Name Sheep");
                 //return "None Name";
@@ -32,6 +32,7 @@ public class SheepProperty : ScriptableObject
         }
         set
         {
+            if(sheepName == "") { sheepName = "name1"; }
             sheepName = value;
         }
     }
