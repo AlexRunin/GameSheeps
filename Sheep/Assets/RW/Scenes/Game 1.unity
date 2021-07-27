@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2452f1908c78dd4c90534fea65111b5, type: 3}
   m_Name: 
@@ -2067,11 +2067,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a61127531e2d9f343a9e581eee25fc7e, type: 2}
   - {fileID: 11400000, guid: a8d8b11875ef54d4da785bad7ee75f03, type: 2}
   - {fileID: 11400000, guid: 140a39bb88240bb4994289905f96a2d1, type: 2}
-  startWait: 1.5
-  waveWaite: 5
-  spawnPoint_1: {x: 0, y: 0, z: 0}
-  spawnPoint_2: {x: 0, y: 0, z: 0}
-  spawnPoint_3: {x: 0, y: 0, z: 0}
+  sheepCount: 0
+  waveCount: 0
+  waveRate: 0
 --- !u!4 &1678588994
 Transform:
   m_ObjectHideFlags: 0
