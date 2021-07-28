@@ -26,16 +26,22 @@ public class TraktorMovement : MonoBehaviour
     // Создаем событие UnityEvent
     [SerializeField] public UnityEvent shootEvent;
 
+    [SerializeField] private Animator animator; // Создаем ссылку на компонент аниматор
+
 
     private void Awake()
     {
         spawnPoint = transform.GetChild(1);
+
+        if (animator == null)
+        {
+            animator = transform.GetChild(0).GetComponent<Animator>();
+        }
     }
 
 
     void Update()
     {
-
         MoveTractor();
         // nextFire -= Time.deltaTime;
     }
@@ -48,6 +54,11 @@ public class TraktorMovement : MonoBehaviour
             {
                 transform.Translate(Vector3.right * speed * direction * Time.deltaTime);
                 soundManager.PlayMotor();
+                animator.SetInteger("Direction", (int)direction);
+                animator.SetBool("IsMove", true);
+
+
+                // ДЗ проверка по градусам или по времени отклонения Трактора, то анимация збрасывается IdelAnimation
             }
         }
     }
@@ -71,6 +82,7 @@ public class TraktorMovement : MonoBehaviour
         //direction = 0f;
         //isMove = false;
         tractorState = TractorState.Stop;
+        animator.SetBool("IsMove", false);
     }
 
     // Делаем кнопку FIRE
@@ -90,6 +102,8 @@ public class TraktorMovement : MonoBehaviour
             soundManager.PlayShootClip();
             //nextFire = fireRate;
             shootEvent.Invoke();
+
+            animator.SetTrigger("Fire");
         }
 
         //else if (nextFire > 1)
