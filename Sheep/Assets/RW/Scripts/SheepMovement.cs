@@ -38,7 +38,7 @@ public class SheepMovement : MonoBehaviour
         if (senoMovement != null)                                          //(other.gameObject.tag == "Seno")
         {
             DestroySheep();
-            Destroy(other.gameObject); //уничтажаем сено 
+            other.gameObject.SetActive(false);//Destroy(other.gameObject); //уничтажаем сено 
         }
     }
 
@@ -48,7 +48,9 @@ public class SheepMovement : MonoBehaviour
         rb.isKinematic = false;
         GetComponent<BoxCollider>().enabled = false;
         rb.AddForce(Vector3.up * jumpForce); // прыгаем
-        Destroy(gameObject, 1f); //уничтажаем сено Sheep
+        // Destroy(gameObject, 1f); //уничтажаем сено Sheep
+
+        gameObject.SetActive(false);
         
         GameObject effect = Instantiate(heartEffect, transform.position + new Vector3(0f, 5f, 0f), heartEffect.transform.rotation); // Spawn
         Destroy(effect, 1f);

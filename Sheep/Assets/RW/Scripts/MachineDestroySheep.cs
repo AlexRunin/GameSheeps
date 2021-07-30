@@ -6,6 +6,6 @@ public class MachineDestroySheep : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) // любой объект который сопрекаснулся с тригером
     {
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
     }
 }

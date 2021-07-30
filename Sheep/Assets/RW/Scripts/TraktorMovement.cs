@@ -11,7 +11,7 @@ public class TraktorMovement : MonoBehaviour
     [SerializeField] private SoundManager soundManager;
 
     [SerializeField] private float speed;
-    [SerializeField] private GameObject seno;
+    [SerializeField] private GameObject senoPrefab;
     [SerializeField] private float fireRate; 
     private float nextFire;
     private float unnextFire;
@@ -28,6 +28,11 @@ public class TraktorMovement : MonoBehaviour
 
     [SerializeField] private Animator animator; // Создаем ссылку на компонент аниматор
 
+    // pool 
+    [SerializeField] private int senoPoolSize; // список объектов(можно) переменная в которой храним размер массива(spawn object)
+    private List<GameObject> senos; //список игровых объектов
+    private int currentSenoIndex;  // будушее активное сено
+
 
     private void Awake()
     {
@@ -37,6 +42,9 @@ public class TraktorMovement : MonoBehaviour
         {
             animator = transform.GetChild(0).GetComponent<Animator>();
         }
+
+        // инициализируем массив
+        senos = new List<GameObject>(senoPoolSize);
     }
 
 
@@ -44,6 +52,17 @@ public class TraktorMovement : MonoBehaviour
     {
         MoveTractor();
         // nextFire -= Time.deltaTime;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < senoPoolSize; i++)
+        {
+            // добавляем в список элемент
+            senos.Add(Instantiate(senoPrefab)); // Instantiate() создаем элемент массив объектов
+            senos[i].transform.SetParent(senoManager); // положили в контейнер
+            senos[i].SetActive(false); // отключаем
+        }
     }
 
     private void MoveTractor()
@@ -96,13 +115,21 @@ public class TraktorMovement : MonoBehaviour
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            GameObject seno = Instantiate(this.seno, spawnPoint.position, this.seno.transform.rotation); // Объект создался
-            seno.transform.SetParent(senoManager);
-            Destroy(seno, 10f);
-            soundManager.PlayShootClip();
-            //nextFire = fireRate;
-            shootEvent.Invoke();
+            //GameObject seno = Instantiate(this.senoPrefab, spawnPoint.position, this.senoPrefab.transform.rotation); // Объект создался
+            //seno.transform.SetParent(senoManager);
+            //Destroy(seno, 10f);
 
+            senos[currentSenoIndex].transform.position = spawnPoint.position; // создаем обекты(pool) позиция
+            senos[currentSenoIndex].SetActive(true); // Активируем
+
+            currentSenoIndex++;
+            if(currentSenoIndex >= senoPoolSize)
+            {
+                currentSenoIndex = 0;
+            }
+
+            soundManager.PlayShootClip();
+            shootEvent.Invoke();
             animator.SetTrigger("Fire");
         }
 

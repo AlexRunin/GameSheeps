@@ -6,6 +6,6 @@ public class SenoDestroyer : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) // любой объект который сопрекаснулся с тригером
     {
-        Destroy(other.gameObject);
+        other.gameObject.SetActive(false);//Destroy(other.gameObject);
     }
 }

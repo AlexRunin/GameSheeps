@@ -16,11 +16,20 @@ public class SheepDestroyer : MonoBehaviour
         {
             soundManager.PlayDropClip();
             other.GetComponent<Rigidbody>().isKinematic = false;
-            Destroy(other.gameObject, 3f);
+            //Destroy(other.gameObject, 3f);
+
+            StartCoroutine(DeactivateSheep(sheepMovement.gameObject));
 
             scoreManager.DropSheep();
 
             droppedSheepEvent.Raise(); 
         }
+    }
+
+    IEnumerator DeactivateSheep(GameObject sheep)
+    {
+        yield return new WaitForSeconds(3f);
+        sheep.gameObject.SetActive(false);
+        sheep.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
