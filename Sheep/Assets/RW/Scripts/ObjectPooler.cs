@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable] // ссылки которые мы создадим в этом классе будут редактируемые в ИНСПЕКТОРЕ
+public class ObjectPoolItem
+{
+    public GameObject pooledObject;
+    public int pooledAmount;
+    public bool willGrow;
+}
+
 public class ObjectPooler : MonoBehaviour
 {
+    // [SerializeField] private GameObject pooledObject; // сам префаб
+    //[SerializeField] private int pooledAmount; // колличество
+    //[SerializeField] private bool willGrow; // для расширения, если кончились(надоли пулу расти)
     public static ObjectPooler objectPooler; // ссылка самих на себя (на прямую имеимдоступ отовсюду)
-    [SerializeField] private GameObject pooledObject; // сам префаб
-    [SerializeField] private int pooledAmount; // колличество
-    [SerializeField] private bool willGrow; // для расширения, если кончились(надоли пулу расти)
-
-    [SerializeField] List<GameObject> pooledObjects; // список объектов которые будут помещены в пулл
+    [SerializeField] private List<GameObject> pooledObjects; // список объектов которые будут помещены в пулл
+    [SerializeField] private List<ObjectPoolItem> itemsToPool; // список Items
 
     private void Awake()
     {
@@ -20,34 +28,45 @@ public class ObjectPooler : MonoBehaviour
     {
         pooledObjects = new List<GameObject>();
 
-        for (int i = 0; i < pooledAmount; i++)
+        foreach (ObjectPoolItem item in itemsToPool)
         {
-            pooledObjects.Add(Instantiate(pooledObject)); // pooledObject - Prefab
-            pooledObjects[i].transform.SetParent(transform);
-            pooledObjects[i].SetActive(false);
+            for (int i = 0; i < item.pooledAmount; i++)
+            {
+                pooledObjects.Add(Instantiate(item.pooledObject)); // pooledObject - Prefab
+                pooledObjects[i].transform.SetParent(transform);
+                pooledObjects[i].SetActive(false);
+            }
         }
+        
     }
 
     // ПЕРЕДАЕМ СОЗДАННЫЕ ОБЪЕКТЫ В ДРУГИХ СКРИПТАХ
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(string tag) // МЕТОД АКТИВАЦИИ ОБЪЕКТА
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy) // pooledObjects[i].activeInHierarchy == false
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag) // pooledObjects[i].activeInHierarchy == false
             {
                 return pooledObjects[i]; // возвращяем выбранный элемент
             }
         }
-        if (willGrow) //willGrow == true
+
+        foreach (ObjectPoolItem item in itemsToPool)
         {
-            // создаем объект
-            GameObject obj = Instantiate(pooledObject);// создаем локально GameObject
-            pooledObjects.Add(obj);  // добавили в список
-            obj.transform.SetParent(transform);
+            if (item.pooledObject.tag == tag)
+            {
+                if (item.willGrow) //willGrow == true
+                {
+                    // создаем объект
+                    GameObject obj = Instantiate(item.pooledObject);// создаем локально GameObject
+                    obj.SetActive(false); // диактивация самого объекта
+                    pooledObjects.Add(obj);  // добавили в список
+                    obj.transform.SetParent(transform);
 
-            return obj;
+                    return obj;
+                }
+            }
         }
-
         return null;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour
 {
+    [SerializeField] private string objectTag; // ссылка на tag
+
     //[SerializeField] private GameObject sheepPrefab;
     [SerializeField] private Vector3 spawnPointPosition;
     [SerializeField] private Vector2 boundary; //граница
@@ -36,7 +38,7 @@ public class SheepSpawner : MonoBehaviour
     {
         float xRandom = Random.Range(boundary.x, boundary.y);
         spawnPointPosition = new Vector3(xRandom, spawnPointPosition.y, spawnPointPosition.z);
-        GameObject sheep = ObjectPooler.objectPooler.GetPooledObject(); // создаем игровой объект
+        GameObject sheep = ObjectPooler.objectPooler.GetPooledObject(objectTag); // создаем игровой объект
         if (sheep == null)
         {
             return;
